@@ -1,7 +1,7 @@
 import os
 import csv
 
-budgetCSVpath = "Resources/budget_data.csv"
+budgetCSVpath = os.path.join("Resources", "budget_data.csv")
 
 
 months = 0
