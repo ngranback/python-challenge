@@ -5,16 +5,16 @@ outpath = 'xxxxx'
 
 '''
 create dictionary
-key for each candidate
-associated values = votes received and % of total votes
+key = candidate
+value = votes received 
 
 for each row
-if the candidate is in the list
-add one to votes received
+if the candidate key is in the dictionary
+add one to that item
 
 if not
-add candidate to list
-add one to votes received
+add candidate key to dictionary
+add one to that item
 
 add one to total votes
 next row
@@ -25,11 +25,10 @@ no mention of county???
 '''
 
 
-votes = 0
+totalVotes = 0
 candidate = 0
 
-candidateList = []
-
+candidateDict = {}
 
 with open(inpath, 'r') as CSVin:
 
@@ -41,16 +40,17 @@ with open(inpath, 'r') as CSVin:
 
 
     for row in electionData:
-        votes += 1
+        totalVotes += 1
         
-        if row[2] in candidateList:
-            randomvariable=1            
+        if row[2] in candidateDict:
+            candidateDict[row[2]] += 1           
         else:
-            candidateList.append(row[2])
+            candidateDict[row[2]] = 1 
       
     
 
-print(candidateList)
+print(candidateDict)
+print(totalVotes)
 
 
 
