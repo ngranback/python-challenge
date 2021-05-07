@@ -60,16 +60,16 @@ print(f'===================\nThe winner is {winner}!!!')
 
 
 #assign percentages to each candidate and print to file   
-with open(outpath, 'w') as summaryDoc:
-    print('Election Results\n===================\n(Candidate, Percentage, Votes Received)')
+with open(outpath, 'w') as outputDoc:
+    print('Election Results\n===================\n(Candidate, Percentage, Votes Received)', file=outputDoc)
 
 
     for key in candidateDict:
         percentage = candidateDict[key]/totalVotes
     
-        print(key, '----', '{0:.0f}%'.format(percentage*100), '----',  candidateDict[key])
+        print(key, '----', '{0:.0f}%'.format(percentage*100), '----',  candidateDict[key], file=outputDoc)
     
-    print(f'===================\nThe winner is {winner}!!!')
+    print(f'===================\nThe winner is {winner}!!!', file=outputDoc)
 
     
   
