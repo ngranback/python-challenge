@@ -1,28 +1,16 @@
 import os, csv
 
 inpath = os.path.join("Resources", "election_data.csv")
-outpath = 'xxxxx'
-
-'''
-create dictionary
-key = candidate
-value = votes received 
-
-for each row
-if the candidate key is in the dictionary
-add one to that item
-
-if not
-add candidate key to dictionary
-add one to that item
-
-add one to total votes
-next row
+outpath = 'Election_Results.txt'
 
 
-no mention of county???
+#create dictionary: key = candidate, value = votes received 
+#for each row if the candidate key is in the dictionary, add one to that key's value'
+#if not add candidate key to dictionary with value of 1
+#then add one to total votes
 
-'''
+#county and voter ID data will not be used
+
 
 
 totalVotes = 0
@@ -30,13 +18,13 @@ candidate = 0
 
 candidateDict = {}
 
+
 with open(inpath, 'r') as CSVin:
 
-    #comma delimited
+    
     electionData = csv.reader(CSVin, delimiter=',')
-
-    #skip header
     next(electionData, None)
+
 
     #identify each candidate as a Key and tally votes as Values
     for row in electionData:
@@ -49,28 +37,39 @@ with open(inpath, 'r') as CSVin:
 
     
 #identify key with largest number as the value
-#aka identify candidate with most votes
 voteList = candidateDict.values()
 mostVotes = max(voteList)
 
+
+#identify the candidate whose votes match the highest number
 for key, value in candidateDict.items():
     if value == mostVotes:
         winner = key #winner of the election!!
         
 
-#assign percentages to each candidate in the dictionary    
+#assign percentages to each candidate and print to terminal    
 print('Election Results\n===================\n(Candidate, Percentage, Votes Received)')
-
 
 for key in candidateDict:
     percentage = candidateDict[key]/totalVotes
     
-    print(key, '---', '{0:.0f}%'.format(percentage*100), '---',  candidateDict[key])
+    print(key, '----', '{0:.0f}%'.format(percentage*100), '----',  candidateDict[key])
     
 print(f'===================\nThe winner is {winner}!!!')
 
 
-print
+
+#assign percentages to each candidate and print to file   
+with open(outpath, 'w') as summaryDoc:
+    print('Election Results\n===================\n(Candidate, Percentage, Votes Received)')
+
+
+    for key in candidateDict:
+        percentage = candidateDict[key]/totalVotes
+    
+        print(key, '----', '{0:.0f}%'.format(percentage*100), '----',  candidateDict[key])
+    
+    print(f'===================\nThe winner is {winner}!!!')
 
     
   
