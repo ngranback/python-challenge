@@ -1,8 +1,0 @@
-
-    Financial analysis covering 86 months:
-    ________________________________________
-    Net profit was $38,382,578
-    Average monthly change was $446,309
-    Most profitable month was Feb-2012 with $1,170,593
-    Least profitable month was Sep-2013 with $-1,196,225
-    
